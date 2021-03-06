@@ -1,6 +1,6 @@
 ---
 language: python
-python: "2.7"
+python: '3.9'
 
 # Use the new container infrastructure
 sudo: false
@@ -27,3 +27,20 @@ script:
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
+
+env:
+- OS=alpine_3.11
+- OS=alpine_3.12
+- OS=alpine_edge
+- OS=archlinux_latest
+- OS=centos_7
+- OS=centos_8
+- OS=debian_buster
+- OS=debian_stretch
+- OS=fedora_31
+- OS=fedora_32
+- OS=ubi8_8.1
+- OS=ubi8_8.2
+- OS=ubuntu_bionic
+- OS=ubuntu_focal
+- OS=ubuntu_xenial
