@@ -1,0 +1,7 @@
+---
+ctlptl_exe: '{{ ctlptl_install_dir }}/ctlptl-{{ ctlptl_ver }}'
+ctlptl_link: '{{ ctlptl_install_dir }}/ctlptl'
+ctlptl_platform: '{{ ctlptl_os }}.{{ ctlptl_arch }}'
+ctlptl_archive: 'ctlptl.{{ ctlptl_ver }}.{{ ctlptl_platform }}.{{ ctlptl_ext }}'
+ctlptl_url: '{{ ctlptl_mirror }}/v{{ ctlptl_ver }}/{{ ctlptl_archive }}'
+ctlptl_checksum: '{{ ctlptl_checksums[ctlptl_ver][ctlptl_platform] }}'

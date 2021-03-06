@@ -1,0 +1,59 @@
+---
+- name: 'Resolve platform specific vars'
+  include_vars: '{{ item }}'
+  with_first_found:
+    - files:
+        - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
+      skip: true
+      paths:
+        - '{{ role_path }}/vars'
+
+
+- name: 'Check if {{ ctlptl_exe }} is installed'
+  stat:
+    path: '{{ ctlptl_exe }}'
+  register: ctlptl_installed
+
+
+- block:
+  - name: 'Create temporary download directory'
+    ansible.builtin.tempfile:
+      state: directory
+      suffix: ctlptl
+    register: ctlptl_download_dir
+
+  - name: 'Download {{ ctlptl_url }} to {{ ctlptl_download_dir.path }}/{{ ctlptl_archive }}'
+    get_url:
+      url: '{{ ctlptl_url }}'
+      dest: '{{ ctlptl_download_dir.path }}/{{ ctlptl_archive }}'
+      checksum: '{{ ctlptl_checksum }}'
+
+  - name: 'Extract {{ ctlptl_download_dir.path }}/{{ ctlptl_archive }}'
+    ansible.builtin.unarchive:
+      src: '{{ ctlptl_download_dir.path }}/{{ ctlptl_archive }}'
+      dest: '{{ ctlptl_download_dir.path }}'
+      remote_src: yes
+
+  - name: 'Ensure {{ ctlptl_install_dir }}  exists'
+    ansible.builtin.file:
+      path: '{{ ctlptl_install_dir }}'
+      state: directory
+      mode: 0755
+
+  - name: 'Copy {{ ctlptl_download_dir.path }}/ctlptl to {{ ctlptl_exe }}'
+    ansible.builtin.copy:
+      src: '{{ ctlptl_download_dir.path }}/ctlptl'
+      dest: '{{ ctlptl_exe }}'
+      remote_src: yes
+      mode: 0755
+
+  when: ctlptl_installed.stat.exists is false
+
+
+- name: 'Link {{ ctlptl_link }} to {{ ctlptl_exe }}'
+  file:
+    src: '{{ ctlptl_exe }}'
+    dest: '{{ ctlptl_link }}'
+    state: link

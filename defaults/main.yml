@@ -1,0 +1,12 @@
+---
+ctlptl_ver: '0.4.2'
+ctlptl_mirror: 'https://github.com/tilt-dev/ctlptl/releases/download'
+ctlptl_os: 'linux'
+ctlptl_arch: 'x86_64'
+ctlptl_ext: 'tar.gz'
+ctlptl_install_dir: '{{ ansible_env.HOME }}/.local/bin'
+
+ctlptl_checksums:
+  0.4.2:
+    linux.x86_64: 'sha256:a284dbefa338398663b55a567349660457084b9212d3af5386089a302cb948f3'
+    mac.x86_64: 'sha256:5d78077192ed56459a3dd6c6fce4d1eabf64dc7e03ed6b2dd54a15499d151d6a'
