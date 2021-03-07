@@ -1,6 +1,13 @@
 ---
 language: python
-python: '3.8'
+jobs:
+  include:
+    - name: "Python 3.9 on Linux"
+      python: '3.9'
+    - name: "Python 3.? on OSX"
+      os: osx
+      osx_image: xcode12.2
+      language: shell
 
 branches: main
 
@@ -16,8 +23,9 @@ addons:
     - python-pip
 
 install:
-  - pip install ansible
+  - pip3 install --upgrade pip ansible
   - ansible --version
+  - python3 --version
   - printf '[defaults]\nroles_path=../' >ansible.cfg
 
 script:
