@@ -17,11 +17,6 @@ os:
 
 dist: focal
 
-addons:
-  apt:
-    packages:
-    - python-pip
-
 install:
   - pip3 install --upgrade pip ansible
   - ansible --version
