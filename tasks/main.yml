@@ -30,13 +30,19 @@
       dest: '{{ ctlptl_download_dir.path }}/{{ ctlptl_archive }}'
       checksum: '{{ ctlptl_checksum }}'
 
+  - name: 'Ensure gnu-tar macosx package is present'
+    comunity.general.homebrew:
+      name: gnu-tar
+      state: present
+    when: ansible_os_family == 'Darwin'
+
   - name: 'Extract {{ ctlptl_download_dir.path }}/{{ ctlptl_archive }}'
     ansible.builtin.unarchive:
       src: '{{ ctlptl_download_dir.path }}/{{ ctlptl_archive }}'
       dest: '{{ ctlptl_download_dir.path }}'
       remote_src: yes
 
-  - name: 'Ensure {{ ctlptl_install_dir }}  exists'
+  - name: 'Ensure {{ ctlptl_install_dir }} exists'
     ansible.builtin.file:
       path: '{{ ctlptl_install_dir }}'
       state: directory
