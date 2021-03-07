@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/danielpieper/ansible-ctlptl.svg?branch=main)](https://travis-ci.com/danielpieper/ansible-ctlptl)
+
 Role Name
 =========
 
