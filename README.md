@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/danielpieper/ansible-ctlptl.svg?branch=main)](https://travis-ci.com/danielpieper/ansible-ctlptl)
 Role Name
 =========
 
@@ -6,7 +7,7 @@ This role installs [ctlptl](https://github.com/tilt-dev/ctlptl) in the users `.l
 Requirements
 ------------
 
--
+TODO
 
 Role Variables
 --------------
@@ -22,10 +23,10 @@ Example Playbook
 ----------------
 
 ```
-    - hosts: localhost
-      connection: local
-      roles:
-         - { role: danielpieper.ctlptl }
+- hosts: localhost
+  connection: local
+  roles:
+     - { role: danielpieper.ctlptl }
 ```
 
 License
