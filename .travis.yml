@@ -1,21 +1,17 @@
 ---
-language: python
+branches: main
+
 jobs:
   include:
     - name: "Python 3.9 on Linux"
+      os: linux
+      dist: focal
+      language: python
       python: '3.9'
-    - name: "Python 3.? on OSX"
+    - name: "Python 3.9 on OSX"
       os: osx
       osx_image: xcode12.2
       language: shell
-
-branches: main
-
-os:
-  - linux
-  - osx
-
-dist: focal
 
 install:
   - pip3 install --upgrade pip ansible
