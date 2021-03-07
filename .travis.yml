@@ -3,7 +3,7 @@ branches: main
 
 jobs:
   include:
-    - name: "Python 3.9 on Linux"
+    - name: "Python 3.9 on Ubuntu 20.04"
       os: linux
       dist: focal
       language: python
