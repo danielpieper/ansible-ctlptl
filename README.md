@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/danielpieper/ansible-ctlptl.svg?branch=main)](https://travis-ci.com/danielpieper/ansible-ctlptl)
 
-Role Name
+Cltptl
 =========
 
 This role installs [ctlptl](https://github.com/tilt-dev/ctlptl) in the users `.local/bin` directory.
